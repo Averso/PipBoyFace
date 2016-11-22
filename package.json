@@ -1,0 +1,241 @@
+{
+    "author": "Averso",
+    "dependencies": {
+        "pebble-clay": "^1.0.3"
+    },
+    "keywords": [],
+    "name": "pip-pebble",
+    "pebble": {
+        "capabilities": [
+            "configurable"
+        ],
+        "displayName": "Pip-pebble",
+        "enableMultiJS": true,
+        "messageKeys": [
+            "vibe_disconnect",
+            "screen_color",
+            "battery_medium_lvl",
+            "battery_low_lvl",
+            "battery_level_warning"
+        ],
+        "projectType": "native",
+        "resources": {
+            "media": [
+                {
+                    "file": "images/charge_icon_green.png",
+                    "name": "IMAGE_CHARGE_GREEN",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/charge_icon_blue.png",
+                    "name": "IMAGE_CHARGE_BLUE",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/charge_icon_amber.png",
+                    "name": "IMAGE_CHARGE_AMBER",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/charge_icon_white.png",
+                    "name": "IMAGE_CHARGE_WHITE",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/bt_icon_blue.png",
+                    "name": "IMAGE_BT_BLUE",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/bt_icon_amber.png",
+                    "name": "IMAGE_BT_AMBER",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/bt_icon_green.png",
+                    "name": "IMAGE_BT_GREEN",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/bt_icon_white.png",
+                    "name": "IMAGE_BT_WHITE",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/amber_medium.png",
+                    "name": "IMAGE_VAULTBOY_MEDIUM_AMBER",
+                    "targetPlatforms": [
+                        "basalt"
+                    ],
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/amber_fine.png",
+                    "name": "IMAGE_VAULTBOY_FINE_AMBER",
+                    "targetPlatforms": [
+                        "basalt"
+                    ],
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/amber_bad.png",
+                    "name": "IMAGE_VAULTBOY_BAD_AMBER",
+                    "targetPlatforms": [
+                        "basalt"
+                    ],
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/blue_medium.png",
+                    "name": "IMAGE_VAULTBOY_MEDIUM_BLUE",
+                    "targetPlatforms": [
+                        "basalt"
+                    ],
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/blue_bad.png",
+                    "name": "IMAGE_VAULTBOY_BAD_BLUE",
+                    "targetPlatforms": [
+                        "basalt"
+                    ],
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/blue_fine.png",
+                    "name": "IMAGE_VAULTBOY_FINE_BLUE",
+                    "targetPlatforms": [
+                        "basalt"
+                    ],
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/green_bad.png",
+                    "name": "IMAGE_VAULTBOY_BAD_GREEN",
+                    "targetPlatforms": [
+                        "basalt"
+                    ],
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/green_medium.png",
+                    "name": "IMAGE_VAULTBOY_MEDIUM_GREEN",
+                    "targetPlatforms": [
+                        "basalt"
+                    ],
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/green_fine.png",
+                    "name": "IMAGE_VAULTBOY_FINE_GREEN",
+                    "targetPlatforms": [
+                        "basalt"
+                    ],
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/white_bad.png",
+                    "name": "IMAGE_VAULTBOY_BAD_WHITE",
+                    "targetPlatforms": [
+                        "basalt"
+                    ],
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/white_medium.png",
+                    "name": "IMAGE_VAULTBOY_MEDIUM_WHITE",
+                    "targetPlatforms": [
+                        "basalt"
+                    ],
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/white_fine.png",
+                    "name": "IMAGE_VAULTBOY_FINE_WHITE",
+                    "targetPlatforms": [
+                        "basalt"
+                    ],
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/amber.png",
+                    "name": "IMAGE_BG_AMBER",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/blue.png",
+                    "name": "IMAGE_BG_BLUE",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
+                    "characterRegex": "[0-9:]",
+                    "file": "fonts/monofonto.ttf",
+                    "name": "FONT_MONOFONTO_TIME_36",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
+                    "characterRegex": "[A-Z]",
+                    "file": "fonts/monofonto.ttf",
+                    "name": "FONT_MONOFONTO_OTHRS_14",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
+                    "characterRegex": "[0-9.]",
+                    "file": "fonts/monofonto.ttf",
+                    "name": "FONT_MONOFONTO_DATE_19",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
+                    "characterRegex": "[a-zA-Z]",
+                    "file": "fonts/monofonto.ttf",
+                    "name": "FONT_MONOFONTO_DAY_18",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
+                    "characterRegex": "[0-9%]",
+                    "file": "fonts/monofonto.ttf",
+                    "name": "FONT_MONOFONTO_BTTRY_12",
+                    "targetPlatforms": null,
+                    "type": "font"
+                },
+                {
+                    "file": "images/green.png",
+                    "name": "IMAGE_BG_GREEN",
+                    "targetPlatforms": [
+                        "basalt"
+                    ],
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/white.png",
+                    "name": "IMAGE_BG_WHITE",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                }
+            ]
+        },
+        "sdkVersion": "3",
+        "targetPlatforms": [
+            "basalt"
+        ],
+        "uuid": "1d29cbc7-f067-4822-b841-8cf6e6c6e0bb",
+        "watchapp": {
+            "watchface": true
+        }
+    },
+    "version": "1.0.0"
+}
