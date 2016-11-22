@@ -4,12 +4,12 @@
         "pebble-clay": "^1.0.3"
     },
     "keywords": [],
-    "name": "pip-pebble",
+    "name": "pip-boy-3000",
     "pebble": {
         "capabilities": [
             "configurable"
         ],
-        "displayName": "Pip-pebble",
+        "displayName": "Pip-Boy 3000",
         "enableMultiJS": true,
         "messageKeys": [
             "vibe_disconnect",
@@ -22,51 +22,99 @@
         "resources": {
             "media": [
                 {
+                    "file": "images/bg_white.png",
+                    "name": "IMAGE_BG_WHITE",
+                    "targetPlatforms": [
+                        "basalt"
+                    ],
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/bg_green.png",
+                    "name": "IMAGE_BG_GREEN",
+                    "targetPlatforms": [
+                        "basalt"
+                    ],
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/bg_blue.png",
+                    "name": "IMAGE_BG_BLUE",
+                    "targetPlatforms": [
+                        "basalt"
+                    ],
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/bg_amber.png",
+                    "name": "IMAGE_BG_AMBER",
+                    "targetPlatforms": [
+                        "basalt"
+                    ],
+                    "type": "bitmap"
+                },
+                {
                     "file": "images/charge_icon_green.png",
                     "name": "IMAGE_CHARGE_GREEN",
-                    "targetPlatforms": null,
+                    "targetPlatforms": [
+                        "basalt"
+                    ],
                     "type": "bitmap"
                 },
                 {
                     "file": "images/charge_icon_blue.png",
                     "name": "IMAGE_CHARGE_BLUE",
-                    "targetPlatforms": null,
+                    "targetPlatforms": [
+                        "basalt"
+                    ],
                     "type": "bitmap"
                 },
                 {
                     "file": "images/charge_icon_amber.png",
                     "name": "IMAGE_CHARGE_AMBER",
-                    "targetPlatforms": null,
+                    "targetPlatforms": [
+                        "basalt"
+                    ],
                     "type": "bitmap"
                 },
                 {
                     "file": "images/charge_icon_white.png",
                     "name": "IMAGE_CHARGE_WHITE",
-                    "targetPlatforms": null,
+                    "targetPlatforms": [
+                        "basalt"
+                    ],
                     "type": "bitmap"
                 },
                 {
                     "file": "images/bt_icon_blue.png",
                     "name": "IMAGE_BT_BLUE",
-                    "targetPlatforms": null,
+                    "targetPlatforms": [
+                        "basalt"
+                    ],
                     "type": "bitmap"
                 },
                 {
                     "file": "images/bt_icon_amber.png",
                     "name": "IMAGE_BT_AMBER",
-                    "targetPlatforms": null,
+                    "targetPlatforms": [
+                        "basalt"
+                    ],
                     "type": "bitmap"
                 },
                 {
                     "file": "images/bt_icon_green.png",
                     "name": "IMAGE_BT_GREEN",
-                    "targetPlatforms": null,
+                    "targetPlatforms": [
+                        "basalt"
+                    ],
                     "type": "bitmap"
                 },
                 {
                     "file": "images/bt_icon_white.png",
                     "name": "IMAGE_BT_WHITE",
-                    "targetPlatforms": null,
+                    "targetPlatforms": [
+                        "basalt"
+                    ],
                     "type": "bitmap"
                 },
                 {
@@ -166,18 +214,6 @@
                     "type": "bitmap"
                 },
                 {
-                    "file": "images/amber.png",
-                    "name": "IMAGE_BG_AMBER",
-                    "targetPlatforms": null,
-                    "type": "bitmap"
-                },
-                {
-                    "file": "images/blue.png",
-                    "name": "IMAGE_BG_BLUE",
-                    "targetPlatforms": null,
-                    "type": "bitmap"
-                },
-                {
                     "characterRegex": "[0-9:]",
                     "file": "fonts/monofonto.ttf",
                     "name": "FONT_MONOFONTO_TIME_36",
@@ -211,20 +247,6 @@
                     "name": "FONT_MONOFONTO_BTTRY_12",
                     "targetPlatforms": null,
                     "type": "font"
-                },
-                {
-                    "file": "images/green.png",
-                    "name": "IMAGE_BG_GREEN",
-                    "targetPlatforms": [
-                        "basalt"
-                    ],
-                    "type": "bitmap"
-                },
-                {
-                    "file": "images/white.png",
-                    "name": "IMAGE_BG_WHITE",
-                    "targetPlatforms": null,
-                    "type": "bitmap"
                 }
             ]
         },
