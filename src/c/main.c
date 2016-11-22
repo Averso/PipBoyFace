@@ -34,12 +34,13 @@ static int layer_time_y = 5;
 static int layer_time_w = 100;
 static int layer_time_h = 37;
 
-static int layer_icon_x=118;
+static int layer_icon_x=117;
 static int layer_icon_w=17;
 static int layer_icon_h=18;
 
-static int layer_charge_y=28;
-static int layer_bt_y=53;
+
+static int layer_battery_y=7;
+static int layer_bt_y=30;
 
 static int layer_bar_w=11;
 static int layer_bar_h=3;
@@ -196,8 +197,8 @@ static void window_load(Window *window)
   bitmap_charge[1] = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_CHARGE_GREEN);
   bitmap_charge[2] = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_CHARGE_BLUE);
   bitmap_charge[3] = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_CHARGE_AMBER);
-  
-  layer_charge = bitmap_layer_create(GRect(layer_icon_x, layer_charge_y, layer_icon_w, layer_icon_h));
+                                                                          // switch as same nu,bers but diffrent dimentions
+  layer_charge = bitmap_layer_create(GRect(layer_icon_x, layer_battery_y, layer_icon_h, layer_icon_w));
   bitmap_layer_set_bitmap(layer_charge, bitmap_charge[0]);
   
   
@@ -223,7 +224,7 @@ static void window_load(Window *window)
     GRect(layer_date_x, layer_date_y,layer_date_w, layer_date_h));
   layer_text_time = text_layer_create(GRect(23,-4, 39, 20));  
   layer_text_date = text_layer_create(GRect(23, 154,39, 20));
-  layer_text_battery = text_layer_create(GRect(112, 7, 26, 20));
+  layer_text_battery = text_layer_create(GRect(112, layer_battery_y, 26, 20));
   
   
 
@@ -311,12 +312,10 @@ static void window_unload(Window *window)
 }
 
 static void window_update()
-{
+{  
   
-  //vibration
-   if(settings.vibe_on_disconnect)
-     bluetooth_callback(connection_service_peek_pebble_app_connection());
-  
+  //check bt status
+  bluetooth_callback(connection_service_peek_pebble_app_connection());  
   
   
   //pip boy color
@@ -528,8 +527,11 @@ static void battery_callback(BatteryChargeState state)
   for(int i=0;i<6;i++)
     layer_mark_dirty(layer_bars[i]);
   
+  //show/hide battery level
+  layer_set_hidden(text_layer_get_layer(layer_text_battery), state.is_charging);
   //show/hide charging icon
   layer_set_hidden(bitmap_layer_get_layer(layer_charge), !(state.is_charging));
+  
   // change text in text layer
   static char s_buffer[5];
   snprintf(s_buffer, sizeof(s_buffer), "%d%%", state.charge_percent);
@@ -563,7 +565,6 @@ static void battery_update_vaultboy()
     bitmap_layer_set_bitmap(layer_battery_vaultboy, *(current_battery_vaultboy_bitmaps+2));
     layer_mark_dirty(bitmap_layer_get_layer(layer_battery_vaultboy));
 }
-
 
 static void battery_bar_update_proc(Layer *layer, GContext *ctx)
 {
