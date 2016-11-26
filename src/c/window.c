@@ -2,6 +2,16 @@
 #include "global.h"
 #include "window.h"
 #include "callbacks.h"
+#include "gbitmap_color_palette_manipulator.h"
+
+//colors in vaultboy
+//GColorWhite, GColorLightGray, GColorDarkGray | white
+//GColorMalachite, GColorIslamicGreen, GColorDarkGreen | green
+//GColorVividCerulean, GColorCobaltBlue, GColorOxfordBlue | blue
+//GColorRajah, GColorWindsorTan, GColorBulgarianRose | amber
+
+
+
 
 void window_load(Window *window)  
 {
@@ -15,58 +25,40 @@ void window_load(Window *window)
   font_date = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_MONOFONTO_DATE_19));
   font_others = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_MONOFONTO_OTHRS_14));
   font_battery = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_MONOFONTO_BTTRY_12));
-  //font color
-  text_color=GColorWhite;
+
+  //colors
+  color_light=GColorWhite;
+  color_medium=GColorLightGray;
+  color_dark=GColorDarkGray;
   
   //BACKGROUND 
   
-  bitmap_background[0] = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BG_WHITE);
-  bitmap_background[1] = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BG_GREEN);
-  bitmap_background[2] = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BG_BLUE);
-  bitmap_background[3] = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BG_AMBER);
-  
+  bitmap_background = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BG);  
   layer_background = bitmap_layer_create(bounds);
-  bitmap_layer_set_bitmap(layer_background,bitmap_background[0]);
+  bitmap_layer_set_bitmap(layer_background,bitmap_background);
   
-  //VAULTBOY
-  current_battery_vaultboy_bitmaps = bitmap_battery_vaultboy_white;
+  //VAULTBOY  
+  bitmap_vaultboy[0] = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_VAULTBOY_FINE);
+  bitmap_vaultboy[1] = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_VAULTBOY_MEDIUM);
+  bitmap_vaultboy[2] = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_VAULTBOY_BAD);
   
-  bitmap_battery_vaultboy_white[0] = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_VAULTBOY_FINE_WHITE);
-  bitmap_battery_vaultboy_white[1] = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_VAULTBOY_MEDIUM_WHITE);
-  bitmap_battery_vaultboy_white[2] = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_VAULTBOY_BAD_WHITE);
-  bitmap_battery_vaultboy_green[0] = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_VAULTBOY_FINE_GREEN);
-  bitmap_battery_vaultboy_green[1] = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_VAULTBOY_MEDIUM_GREEN);
-  bitmap_battery_vaultboy_green[2] = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_VAULTBOY_BAD_GREEN);
-  bitmap_battery_vaultboy_blue[0] = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_VAULTBOY_FINE_BLUE);
-  bitmap_battery_vaultboy_blue[1] = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_VAULTBOY_MEDIUM_BLUE);
-  bitmap_battery_vaultboy_blue[2] = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_VAULTBOY_BAD_BLUE);
-  bitmap_battery_vaultboy_amber[0] = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_VAULTBOY_FINE_AMBER);
-  bitmap_battery_vaultboy_amber[1] = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_VAULTBOY_MEDIUM_AMBER);
-  bitmap_battery_vaultboy_amber[2] = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_VAULTBOY_BAD_AMBER);
-  
-  layer_battery_vaultboy = bitmap_layer_create(
+  layer_vaultboy = bitmap_layer_create(
     GRect(LAYER_VAULTBOY_X, LAYER_VAULTBOY_Y, LAYER_VAULTBOY_W, LAYER_VAULTBOY_H));
-  bitmap_layer_set_bitmap(layer_battery_vaultboy,*current_battery_vaultboy_bitmaps);
+  bitmap_layer_set_bitmap(layer_vaultboy,bitmap_vaultboy[0]);
   
   
   //BLUETOOTH ICON
-  bitmap_bt[0] = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BT_WHITE);
-  bitmap_bt[1] = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BT_GREEN);
-  bitmap_bt[2] = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BT_BLUE);
-  bitmap_bt[3] = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BT_AMBER);
+  bitmap_bt = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_BT);
   
   layer_bt = bitmap_layer_create(GRect(LAYER_ICON_X, LAYER_BT_Y, LAYER_ICON_W, LAYER_ICON_H));
-  bitmap_layer_set_bitmap(layer_bt, bitmap_bt[0]);
+  bitmap_layer_set_bitmap(layer_bt, bitmap_bt);
   
   //CHARGE ICON
-  bitmap_charge[0] = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_CHARGE_WHITE);
-  bitmap_charge[1] = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_CHARGE_GREEN);
-  bitmap_charge[2] = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_CHARGE_BLUE);
-  bitmap_charge[3] = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_CHARGE_AMBER);
+  bitmap_charge = gbitmap_create_with_resource(RESOURCE_ID_IMAGE_CHARGE);
   
   //h and w switched as charge image has diffrent dimensions
   layer_charge = bitmap_layer_create(GRect(LAYER_ICON_X, LAYER_BATTERY_Y, LAYER_ICON_H, LAYER_ICON_W));
-  bitmap_layer_set_bitmap(layer_charge, bitmap_charge[0]);
+  bitmap_layer_set_bitmap(layer_charge, bitmap_charge);
   
   
   //HEALTH-BATTERY BARS
@@ -77,7 +69,7 @@ void window_load(Window *window)
   layer_bars[4] = layer_create(GRect(97, 69, LAYER_BAR_W, LAYER_BAR_H));
   layer_bars[5] = layer_create(GRect(97, 115, LAYER_BAR_W, LAYER_BAR_H));
   
-  //assign to layer update proc
+  //assign bars to layer update proc
   for(int i=0;i<6;i++)
     layer_set_update_proc(layer_bars[i], battery_bar_update_proc);
   
@@ -95,16 +87,16 @@ void window_load(Window *window)
   
   
 
-  set_up_text_layer(layer_time, GColorClear, text_color, "00:00", font_time,GTextAlignmentCenter);
-  set_up_text_layer(layer_weekday, GColorClear, text_color, "Mon", font_weekday,GTextAlignmentLeft);
-  set_up_text_layer(layer_date, GColorClear, text_color, "11.11.16", font_date,GTextAlignmentCenter);
-  set_up_text_layer(layer_text_time, GColorClear, text_color, "TIME", font_others,GTextAlignmentCenter);
-  set_up_text_layer(layer_text_date, GColorClear, text_color, "DATE", font_others,GTextAlignmentCenter);
-  set_up_text_layer(layer_text_battery, GColorClear, text_color, "100%", font_battery,GTextAlignmentCenter);
+  set_up_text_layer(layer_time, GColorClear, color_light, "00:00", font_time,GTextAlignmentCenter);
+  set_up_text_layer(layer_weekday, GColorClear, color_light, "Mon", font_weekday,GTextAlignmentLeft);
+  set_up_text_layer(layer_date, GColorClear, color_light, "11.11.16", font_date,GTextAlignmentCenter);
+  set_up_text_layer(layer_text_time, GColorClear, color_light, "TIME", font_others,GTextAlignmentCenter);
+  set_up_text_layer(layer_text_date, GColorClear, color_light, "DATE", font_others,GTextAlignmentCenter);
+  set_up_text_layer(layer_text_battery, GColorClear, color_light, "100%", font_battery,GTextAlignmentCenter);
   
       
   layer_add_child(window_layer,bitmap_layer_get_layer(layer_background));
-  layer_add_child(window_layer,bitmap_layer_get_layer(layer_battery_vaultboy));
+  layer_add_child(window_layer,bitmap_layer_get_layer(layer_vaultboy));
   layer_add_child(window_layer,bitmap_layer_get_layer(layer_bt));
   layer_add_child(window_layer,bitmap_layer_get_layer(layer_charge));
   layer_add_child(window_layer,text_layer_get_layer(layer_text_time));
@@ -119,7 +111,7 @@ void window_load(Window *window)
   
   
   //turn on transparency
-  bitmap_layer_set_compositing_mode(layer_battery_vaultboy, GCompOpSet); 
+  bitmap_layer_set_compositing_mode(layer_vaultboy, GCompOpSet); 
   bitmap_layer_set_compositing_mode(layer_bt, GCompOpSet);   
   bitmap_layer_set_compositing_mode(layer_charge, GCompOpSet); 
   
@@ -151,23 +143,21 @@ void window_unload(Window *window)
  
   //destroy bitmaps
   
-  for(int i=0; i<4;i++)
-  {
-    gbitmap_destroy(bitmap_background[i]);      
-    gbitmap_destroy(bitmap_bt[i]);  
-    gbitmap_destroy(bitmap_charge[i]);  
-  }
+  
+    gbitmap_destroy(bitmap_background);      
+    gbitmap_destroy(bitmap_bt);  
+    gbitmap_destroy(bitmap_charge);  
+  
   
   //destroy vaultboys bitmaps
   for(int i=0; i<3;i++)
   {  
-    gbitmap_destroy(bitmap_battery_vaultboy_white[i]);      
-    gbitmap_destroy(bitmap_battery_vaultboy_green[i]);      
-    gbitmap_destroy(bitmap_battery_vaultboy_blue[i]);    
+    gbitmap_destroy(bitmap_vaultboy[i]);      
+    
   }
   
   bitmap_layer_destroy(layer_background);
-  bitmap_layer_destroy(layer_battery_vaultboy);
+  bitmap_layer_destroy(layer_vaultboy);
   bitmap_layer_destroy(layer_bt);
   
   for(int i=0; i<6;i++)
@@ -188,38 +178,22 @@ void window_update()
   switch(settings.screen_color)
   {
     case WHITE:
-      text_color = GColorWhite;   
-      bitmap_layer_set_bitmap(layer_background,bitmap_background[0]); //background
-      current_battery_vaultboy_bitmaps=bitmap_battery_vaultboy_white;    //vaoultboy
-      bitmap_layer_set_bitmap(layer_bt, bitmap_bt[0]);
-      bitmap_layer_set_bitmap(layer_charge, bitmap_charge[0]);
+      change_layout_colors(GColorWhite,GColorLightGray,GColorDarkGray);     
       break;
     case GREEN:
-      text_color = GColorMalachite;    
-      bitmap_layer_set_bitmap(layer_background,bitmap_background[1]);
-      current_battery_vaultboy_bitmaps=bitmap_battery_vaultboy_green;
-      bitmap_layer_set_bitmap(layer_bt, bitmap_bt[1]);    
-      bitmap_layer_set_bitmap(layer_charge, bitmap_charge[1]);
+      change_layout_colors(GColorMalachite, GColorIslamicGreen, GColorDarkGreen);
       break;
     case BLUE:
-      text_color = GColorVividCerulean;    
-      bitmap_layer_set_bitmap(layer_background,bitmap_background[2]);
-      current_battery_vaultboy_bitmaps=bitmap_battery_vaultboy_blue; 
-      bitmap_layer_set_bitmap(layer_bt, bitmap_bt[2]);
-      bitmap_layer_set_bitmap(layer_charge, bitmap_charge[2]);
+      change_layout_colors(GColorVividCerulean, GColorCobaltBlue, GColorOxfordBlue);
       break;
     case AMBER:
-      text_color = GColorRajah;
-      bitmap_layer_set_bitmap(layer_background,bitmap_background[3]);
-      current_battery_vaultboy_bitmaps=bitmap_battery_vaultboy_amber;      
-      bitmap_layer_set_bitmap(layer_bt, bitmap_bt[3]);
-      bitmap_layer_set_bitmap(layer_charge, bitmap_charge[3]);
-      break;        
+      change_layout_colors(GColorRajah, GColorWindsorTan, GColorBulgarianRose);
+      break;      
   }      
   //refresh vault boy
   battery_update_vaultboy();
-  //layer_mark_dirty(bitmap_layer_get_layer(layer_battery_vaultboy));
-  change_texts_color(text_color);
+  
+  change_texts_color(color_light);
 }
 
 void set_up_text_layer(TextLayer *layer, GColor background, GColor text_color, const char * text,GFont font,GTextAlignment alignment)
@@ -240,4 +214,27 @@ void change_texts_color(GColor text_color)
   text_layer_set_text_color(layer_text_date, text_color);
   text_layer_set_text_color(layer_text_battery, text_color);
  
+}
+
+
+void change_layout_colors(GColor new_light, GColor new_medium, GColor new_dark)
+{
+  //bg          
+  replace_gbitmap_color(color_light, new_light,bitmap_background, layer_background);
+  replace_gbitmap_color(color_medium, new_medium,bitmap_background, layer_background);
+  replace_gbitmap_color(color_dark, new_dark,bitmap_background, layer_background);
+  //vaultboy
+  for(int i=0; i<3;i++)
+  {
+    replace_gbitmap_color(color_light, new_light, bitmap_vaultboy[i], layer_vaultboy);
+    replace_gbitmap_color(color_medium, new_medium, bitmap_vaultboy[i], layer_vaultboy);           
+  }
+  //bluetooth
+  replace_gbitmap_color(color_light, new_light,bitmap_bt, layer_bt);
+  //charge
+  replace_gbitmap_color(color_light, new_light,bitmap_charge, layer_charge);
+  //new colors
+  color_light = new_light;
+  color_medium = new_medium;
+  color_dark = new_dark;
 }

@@ -39,12 +39,9 @@ Window *main_window;
 TextLayer *layer_time, *layer_weekday,*layer_date, *layer_text_time, *layer_text_date, *layer_text_battery;     
 GFont font_time, font_weekday,font_date,font_others, font_battery; 
 Layer *layer_bars[6];
-BitmapLayer *layer_background, *layer_battery_vaultboy, *layer_bt, *layer_charge;                          
-GBitmap *bitmap_background[4], *bitmap_battery_vaultboy_white[3],*bitmap_battery_vaultboy_green[3]
-                                    ,*bitmap_battery_vaultboy_blue[3],*bitmap_battery_vaultboy_amber[3]
-                                    ,*bitmap_bt[4],*bitmap_charge[4];
-GBitmap **current_battery_vaultboy_bitmaps; //pointer to array with cetrain color of vaultboy
-GColor text_color;
+BitmapLayer *layer_background, *layer_vaultboy, *layer_bt, *layer_charge;                          
+GBitmap *bitmap_background, *bitmap_vaultboy[3],*bitmap_bt,*bitmap_charge;
+GColor color_light, color_medium, color_dark;
 
 int battery_level;
 

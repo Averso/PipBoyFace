@@ -45,17 +45,17 @@ void battery_update_vaultboy()
   //change vaultboy image depending on battery lvl  
   if(battery_level<=100 && battery_level>settings.battery_medium_level)
   {  
-    bitmap_layer_set_bitmap(layer_battery_vaultboy, *current_battery_vaultboy_bitmaps);
+    bitmap_layer_set_bitmap(layer_vaultboy, bitmap_vaultboy[0]);
   }
   else if (battery_level<=settings.battery_medium_level && battery_level>settings.battery_low_level)
   {  
-    bitmap_layer_set_bitmap(layer_battery_vaultboy, *(current_battery_vaultboy_bitmaps+1));
+    bitmap_layer_set_bitmap(layer_vaultboy, bitmap_vaultboy[1]);
   }
   else    
-    bitmap_layer_set_bitmap(layer_battery_vaultboy, *(current_battery_vaultboy_bitmaps+2));
+    bitmap_layer_set_bitmap(layer_vaultboy, bitmap_vaultboy[2]);
   
   //not sure if necessary
-  layer_mark_dirty(bitmap_layer_get_layer(layer_battery_vaultboy));
+  layer_mark_dirty(bitmap_layer_get_layer(layer_vaultboy));
 }
 
 void battery_bar_update_proc(Layer *layer, GContext *ctx)
@@ -69,7 +69,7 @@ void battery_bar_update_proc(Layer *layer, GContext *ctx)
   graphics_fill_rect(ctx, bounds, 0, GCornerNone);
 
   // Draw the bar
-  graphics_context_set_fill_color(ctx, text_color);
+  graphics_context_set_fill_color(ctx, color_light);
   graphics_fill_rect(ctx, GRect(0, 0, width, bounds.size.h), 0, GCornerNone);
   
 }

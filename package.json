@@ -22,192 +22,48 @@
         "resources": {
             "media": [
                 {
-                    "file": "images/bg_white.png",
-                    "name": "IMAGE_BG_WHITE",
+                    "file": "images/vaultboy_medium.png",
+                    "name": "IMAGE_VAULTBOY_MEDIUM",
                     "targetPlatforms": [
                         "basalt"
                     ],
                     "type": "bitmap"
                 },
                 {
-                    "file": "images/bg_green.png",
-                    "name": "IMAGE_BG_GREEN",
+                    "file": "images/vaultboy_fine.png",
+                    "name": "IMAGE_VAULTBOY_FINE",
                     "targetPlatforms": [
                         "basalt"
                     ],
                     "type": "bitmap"
                 },
                 {
-                    "file": "images/bg_blue.png",
-                    "name": "IMAGE_BG_BLUE",
+                    "file": "images/vaultboy_bad.png",
+                    "name": "IMAGE_VAULTBOY_BAD",
                     "targetPlatforms": [
                         "basalt"
                     ],
                     "type": "bitmap"
                 },
                 {
-                    "file": "images/bg_amber.png",
-                    "name": "IMAGE_BG_AMBER",
+                    "file": "images/bt_icon.png",
+                    "name": "IMAGE_BT",
                     "targetPlatforms": [
                         "basalt"
                     ],
                     "type": "bitmap"
                 },
                 {
-                    "file": "images/charge_icon_green.png",
-                    "name": "IMAGE_CHARGE_GREEN",
+                    "file": "images/charge_icon.png",
+                    "name": "IMAGE_CHARGE",
                     "targetPlatforms": [
                         "basalt"
                     ],
                     "type": "bitmap"
                 },
                 {
-                    "file": "images/charge_icon_blue.png",
-                    "name": "IMAGE_CHARGE_BLUE",
-                    "targetPlatforms": [
-                        "basalt"
-                    ],
-                    "type": "bitmap"
-                },
-                {
-                    "file": "images/charge_icon_amber.png",
-                    "name": "IMAGE_CHARGE_AMBER",
-                    "targetPlatforms": [
-                        "basalt"
-                    ],
-                    "type": "bitmap"
-                },
-                {
-                    "file": "images/charge_icon_white.png",
-                    "name": "IMAGE_CHARGE_WHITE",
-                    "targetPlatforms": [
-                        "basalt"
-                    ],
-                    "type": "bitmap"
-                },
-                {
-                    "file": "images/bt_icon_blue.png",
-                    "name": "IMAGE_BT_BLUE",
-                    "targetPlatforms": [
-                        "basalt"
-                    ],
-                    "type": "bitmap"
-                },
-                {
-                    "file": "images/bt_icon_amber.png",
-                    "name": "IMAGE_BT_AMBER",
-                    "targetPlatforms": [
-                        "basalt"
-                    ],
-                    "type": "bitmap"
-                },
-                {
-                    "file": "images/bt_icon_green.png",
-                    "name": "IMAGE_BT_GREEN",
-                    "targetPlatforms": [
-                        "basalt"
-                    ],
-                    "type": "bitmap"
-                },
-                {
-                    "file": "images/bt_icon_white.png",
-                    "name": "IMAGE_BT_WHITE",
-                    "targetPlatforms": [
-                        "basalt"
-                    ],
-                    "type": "bitmap"
-                },
-                {
-                    "file": "images/amber_medium.png",
-                    "name": "IMAGE_VAULTBOY_MEDIUM_AMBER",
-                    "targetPlatforms": [
-                        "basalt"
-                    ],
-                    "type": "bitmap"
-                },
-                {
-                    "file": "images/amber_fine.png",
-                    "name": "IMAGE_VAULTBOY_FINE_AMBER",
-                    "targetPlatforms": [
-                        "basalt"
-                    ],
-                    "type": "bitmap"
-                },
-                {
-                    "file": "images/amber_bad.png",
-                    "name": "IMAGE_VAULTBOY_BAD_AMBER",
-                    "targetPlatforms": [
-                        "basalt"
-                    ],
-                    "type": "bitmap"
-                },
-                {
-                    "file": "images/blue_medium.png",
-                    "name": "IMAGE_VAULTBOY_MEDIUM_BLUE",
-                    "targetPlatforms": [
-                        "basalt"
-                    ],
-                    "type": "bitmap"
-                },
-                {
-                    "file": "images/blue_bad.png",
-                    "name": "IMAGE_VAULTBOY_BAD_BLUE",
-                    "targetPlatforms": [
-                        "basalt"
-                    ],
-                    "type": "bitmap"
-                },
-                {
-                    "file": "images/blue_fine.png",
-                    "name": "IMAGE_VAULTBOY_FINE_BLUE",
-                    "targetPlatforms": [
-                        "basalt"
-                    ],
-                    "type": "bitmap"
-                },
-                {
-                    "file": "images/green_bad.png",
-                    "name": "IMAGE_VAULTBOY_BAD_GREEN",
-                    "targetPlatforms": [
-                        "basalt"
-                    ],
-                    "type": "bitmap"
-                },
-                {
-                    "file": "images/green_medium.png",
-                    "name": "IMAGE_VAULTBOY_MEDIUM_GREEN",
-                    "targetPlatforms": [
-                        "basalt"
-                    ],
-                    "type": "bitmap"
-                },
-                {
-                    "file": "images/green_fine.png",
-                    "name": "IMAGE_VAULTBOY_FINE_GREEN",
-                    "targetPlatforms": [
-                        "basalt"
-                    ],
-                    "type": "bitmap"
-                },
-                {
-                    "file": "images/white_bad.png",
-                    "name": "IMAGE_VAULTBOY_BAD_WHITE",
-                    "targetPlatforms": [
-                        "basalt"
-                    ],
-                    "type": "bitmap"
-                },
-                {
-                    "file": "images/white_medium.png",
-                    "name": "IMAGE_VAULTBOY_MEDIUM_WHITE",
-                    "targetPlatforms": [
-                        "basalt"
-                    ],
-                    "type": "bitmap"
-                },
-                {
-                    "file": "images/white_fine.png",
-                    "name": "IMAGE_VAULTBOY_FINE_WHITE",
+                    "file": "images/background.png",
+                    "name": "IMAGE_BG",
                     "targetPlatforms": [
                         "basalt"
                     ],
