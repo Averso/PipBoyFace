@@ -41,22 +41,34 @@ GFont font_time, font_weekday,font_date,font_others, font_battery;
 Layer *layer_bars[6];
 BitmapLayer *layer_background, *layer_vaultboy, *layer_bt, *layer_charge;                          
 GBitmap *bitmap_background, *bitmap_vaultboy[3],*bitmap_bt,*bitmap_charge;
-GColor color_light, color_medium, color_dark;
+GColor color_light;
+
+#if defined(PBL_PLATFORM_BASALT)
+GColor color_medium, color_dark;
+#endif
 
 int battery_level;
 
-//enums for settings
+#if defined(PBL_PLATFORM_BASALT)
 typedef enum {WHITE,GREEN,BLUE,AMBER} ScreenColor;
+#endif
 
 
 //settings struct
+#if defined(PBL_PLATFORM_BASALT)
 typedef struct ClaySettings {
   ScreenColor screen_color;
   bool vibe_on_disconnect;
   int battery_medium_level;
   int battery_low_level;
 } ClaySettings;
-
+#else
+typedef struct ClaySettings {
+  bool vibe_on_disconnect;
+  int battery_medium_level;
+  int battery_low_level;
+} ClaySettings;
+#endif
 
 // An instance of the struct
 ClaySettings settings;

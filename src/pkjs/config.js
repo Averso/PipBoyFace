@@ -5,6 +5,7 @@ module.exports = [
   },
   {
     "type": "section",
+    "capabilities": ["PLATFORM_BASALT"],
     "items": [
       {
       "type": "heading",
@@ -42,7 +43,7 @@ module.exports = [
       "type": "heading",
       "defaultValue": "Battery",
       "description": "Set levels on which vault boy will change."
-      },     
+      },
       {
         "type": "input",
         "messageKey": "battery_medium_lvl",
@@ -63,13 +64,13 @@ module.exports = [
         "type": "number",
         "max":"100",
         "min":"1"
-      }     
-    }, 
-    {
-      "type": "text",
-      "messageKey": "battery_level_warning",
-      "defaultValue": ""
-    }
+        }     
+      },                 
+      {
+        "type": "text",
+        "messageKey": "battery_level_warning",
+        "defaultValue": ""
+      }
     ]
   },
   {

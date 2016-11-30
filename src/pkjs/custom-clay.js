@@ -2,18 +2,19 @@ module.exports = function() {
   var clayConfig = this;
   var mediumLvl;
   var lowLvl;
-  var debugText;
+  var warning;
 
   function checkValueCorrect()
   { 
     if (parseInt(lowLvl.get()) >= parseInt(mediumLvl.get())) 
     {
-      debugText.show();
-      debugText.set("Low level can't be higher than medium level!");
+      warning.show();
+      warning.set("Low level can't be higher than medium level!");
     }
     else 
     {      
-      debugText.hide();
+      warning.hide();
+      warning.set("");
     }     
   }
     
@@ -23,9 +24,9 @@ module.exports = function() {
     
     mediumLvl = clayConfig.getItemByMessageKey('battery_medium_lvl');
     lowLvl = clayConfig.getItemByMessageKey('battery_low_lvl');
-    debugText = clayConfig.getItemByMessageKey('battery_level_warning');    
+    warning = clayConfig.getItemByMessageKey('battery_level_warning');    
     
-    debugText.hide();
+    warning.hide();
     //toggleBackground.call(enableBackgroundToggle);
     mediumLvl.on('change', checkValueCorrect);
     lowLvl.on('change', checkValueCorrect);

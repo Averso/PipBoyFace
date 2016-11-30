@@ -4,14 +4,15 @@
 #include "window.h"
 
 void save_settings() {
-  persist_write_data(SETTINGS_KEY, &settings, sizeof(settings));
-  
+  persist_write_data(SETTINGS_KEY, &settings, sizeof(settings));  
   //refresh window
   window_update();
 }
 
 void load_default_settings() {
+  #if defined(PBL_PLATFORM_BASALT)
   settings.screen_color = WHITE; 
+  #endif
   settings.vibe_on_disconnect = false;
   settings.battery_medium_level=BATTERY_MED_DEFAULT;
   settings.battery_low_level=BATTERY_LOW_DEFAULT;
@@ -26,6 +27,7 @@ void inbox_received_handler(DictionaryIterator *iter, void *context) {
    settings.vibe_on_disconnect = vibe_enabled->value->int32 == 1;
   }  
   
+  #if defined(PBL_PLATFORM_BASALT)
   //color
   Tuple *screen_color = dict_find(iter, MESSAGE_KEY_screen_color);
   if(screen_color) {   
@@ -39,7 +41,7 @@ void inbox_received_handler(DictionaryIterator *iter, void *context) {
     else if (strcmp(screen_color->value->cstring, "amber") == 0)   
        settings.screen_color=AMBER;   
   }
-  
+  #endif
   
   //battery levels  
   int low_lvl=0, med_lvl=0;

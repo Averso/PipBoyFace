@@ -26,10 +26,12 @@ void window_load(Window *window)
   font_others = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_MONOFONTO_OTHRS_14));
   font_battery = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_MONOFONTO_BTTRY_12));
 
-  //colors
+  //colors  
   color_light=GColorWhite;
+  #if defined(PBL_PLATFORM_BASALT)
   color_medium=GColorLightGray;
   color_dark=GColorDarkGray;
+  #endif
   
   //BACKGROUND 
   
@@ -173,7 +175,7 @@ void window_update()
   //check bt status
   bluetooth_callback(connection_service_peek_pebble_app_connection());  
   
-  
+  #if defined(PBL_PLATFORM_BASALT)
   //change colors of layout
   switch(settings.screen_color)
   {
@@ -190,10 +192,13 @@ void window_update()
       change_layout_colors(GColorRajah, GColorWindsorTan, GColorBulgarianRose);
       break;      
   }      
+  change_texts_color(color_light);
+  #endif
+  
   //refresh vault boy
   battery_update_vaultboy();
   
-  change_texts_color(color_light);
+
 }
 
 void set_up_text_layer(TextLayer *layer, GColor background, GColor text_color, const char * text,GFont font,GTextAlignment alignment)
@@ -205,6 +210,7 @@ void set_up_text_layer(TextLayer *layer, GColor background, GColor text_color, c
   text_layer_set_text_alignment(layer,alignment); 
 }
 
+#if defined(PBL_PLATFORM_BASALT)
 void change_texts_color(GColor text_color)
 {  
   text_layer_set_text_color(layer_time, text_color);
@@ -215,7 +221,6 @@ void change_texts_color(GColor text_color)
   text_layer_set_text_color(layer_text_battery, text_color);
  
 }
-
 
 void change_layout_colors(GColor new_light, GColor new_medium, GColor new_dark)
 {
@@ -238,3 +243,4 @@ void change_layout_colors(GColor new_light, GColor new_medium, GColor new_dark)
   color_medium = new_medium;
   color_dark = new_dark;
 }
+#endif
