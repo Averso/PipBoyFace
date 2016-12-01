@@ -5,7 +5,7 @@ module.exports = [
   },
   {
     "type": "section",
-    "capabilities": ["PLATFORM_BASALT"],
+    "capabilities": ["COLOR"],
     "items": [
       {
       "type": "heading",

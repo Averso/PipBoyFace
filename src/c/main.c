@@ -70,12 +70,16 @@ static void tick_handler(struct tm *tick_time, TimeUnits units_changed)
 {
   if (units_changed & MINUTE_UNIT)
   {
-    update_time();
+     update_time();
+     //show/hide quiet time icon depending if it's on
+    // APP_LOG(APP_LOG_LEVEL_DEBUG, "Quiet time: %d", quiet_time_is_active());
+     layer_set_hidden(bitmap_layer_get_layer(layer_quiettime), !quiet_time_is_active());
+  
   }
   if(units_changed & DAY_UNIT)
   {
-    update_weekday();    
-    update_date();
+     update_weekday();    
+     update_date();
   }
   
 }

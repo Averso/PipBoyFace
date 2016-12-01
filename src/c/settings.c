@@ -10,7 +10,7 @@ void save_settings() {
 }
 
 void load_default_settings() {
-  #if defined(PBL_PLATFORM_BASALT)
+  #ifdef PBL_COLOR
   settings.screen_color = WHITE; 
   #endif
   settings.vibe_on_disconnect = false;
@@ -27,7 +27,7 @@ void inbox_received_handler(DictionaryIterator *iter, void *context) {
    settings.vibe_on_disconnect = vibe_enabled->value->int32 == 1;
   }  
   
-  #if defined(PBL_PLATFORM_BASALT)
+  #ifdef PBL_COLOR
   //color
   Tuple *screen_color = dict_find(iter, MESSAGE_KEY_screen_color);
   if(screen_color) {   

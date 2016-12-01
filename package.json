@@ -22,6 +22,24 @@
         "resources": {
             "media": [
                 {
+                    "file": "images/quiet_icon.png",
+                    "name": "IMAGE_ICON_QUIET",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk",
+                        "diorite"
+                    ],
+                    "type": "bitmap"
+                },
+                {
+                    "file": "images/background_chalk.png",
+                    "name": "IMAGE_BG",
+                    "targetPlatforms": [
+                        "chalk"
+                    ],
+                    "type": "bitmap"
+                },
+                {
                     "file": "images/pb_icon_d.png",
                     "name": "IMAGE_PB_ICON",
                     "targetPlatforms": [
@@ -58,7 +76,8 @@
                     "menuIcon": true,
                     "name": "IMAGE_PB_ICON",
                     "targetPlatforms": [
-                        "basalt"
+                        "basalt",
+                        "chalk"
                     ],
                     "type": "bitmap"
                 },
@@ -66,7 +85,8 @@
                     "file": "images/vaultboy_medium.png",
                     "name": "IMAGE_VAULTBOY_MEDIUM",
                     "targetPlatforms": [
-                        "basalt"
+                        "basalt",
+                        "chalk"
                     ],
                     "type": "bitmap"
                 },
@@ -74,7 +94,8 @@
                     "file": "images/vaultboy_fine.png",
                     "name": "IMAGE_VAULTBOY_FINE",
                     "targetPlatforms": [
-                        "basalt"
+                        "basalt",
+                        "chalk"
                     ],
                     "type": "bitmap"
                 },
@@ -83,6 +104,7 @@
                     "name": "IMAGE_VAULTBOY_BAD",
                     "targetPlatforms": [
                         "basalt",
+                        "chalk",
                         "diorite"
                     ],
                     "type": "bitmap"
@@ -92,6 +114,7 @@
                     "name": "IMAGE_BT",
                     "targetPlatforms": [
                         "basalt",
+                        "chalk",
                         "diorite"
                     ],
                     "type": "bitmap"
@@ -101,6 +124,7 @@
                     "name": "IMAGE_CHARGE",
                     "targetPlatforms": [
                         "basalt",
+                        "chalk",
                         "diorite"
                     ],
                     "type": "bitmap"
@@ -114,38 +138,82 @@
                     "type": "bitmap"
                 },
                 {
+                    "characterRegex": "[0-9%]",
+                    "file": "fonts/monofonto.ttf",
+                    "name": "FONT_MONOFONTO_BTTRY_10",
+                    "targetPlatforms": [
+                        "chalk"
+                    ],
+                    "type": "font"
+                },
+                {
+                    "characterRegex": "[a-zA-Z]",
+                    "file": "fonts/monofonto.ttf",
+                    "name": "FONT_MONOFONTO_DAY_14",
+                    "targetPlatforms": [
+                        "chalk"
+                    ],
+                    "type": "font"
+                },
+                {
+                    "characterRegex": "[0-9:]",
+                    "file": "fonts/monofonto.ttf",
+                    "name": "FONT_MONOFONTO_TIME_32",
+                    "targetPlatforms": [
+                        "chalk"
+                    ],
+                    "type": "font"
+                },
+                {
                     "characterRegex": "[0-9:]",
                     "file": "fonts/monofonto.ttf",
                     "name": "FONT_MONOFONTO_TIME_36",
-                    "targetPlatforms": null,
+                    "targetPlatforms": [
+                        "basalt",
+                        "diorite"
+                    ],
                     "type": "font"
                 },
                 {
                     "characterRegex": "[A-Z]",
                     "file": "fonts/monofonto.ttf",
-                    "name": "FONT_MONOFONTO_OTHRS_14",
-                    "targetPlatforms": null,
+                    "name": "FONT_MONOFONTO_LABELS_14",
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk",
+                        "diorite"
+                    ],
                     "type": "font"
                 },
                 {
                     "characterRegex": "[0-9.]",
                     "file": "fonts/monofonto.ttf",
                     "name": "FONT_MONOFONTO_DATE_19",
-                    "targetPlatforms": null,
+                    "targetPlatforms": [
+                        "basalt",
+                        "chalk",
+                        "diorite"
+                    ],
                     "type": "font"
                 },
                 {
                     "characterRegex": "[a-zA-Z]",
                     "file": "fonts/monofonto.ttf",
                     "name": "FONT_MONOFONTO_DAY_18",
-                    "targetPlatforms": null,
+                    "targetPlatforms": [
+                        "basalt",
+                        "diorite"
+                    ],
                     "type": "font"
                 },
                 {
                     "characterRegex": "[0-9%]",
                     "file": "fonts/monofonto.ttf",
                     "name": "FONT_MONOFONTO_BTTRY_12",
-                    "targetPlatforms": null,
+                    "targetPlatforms": [
+                        "basalt",
+                        "diorite"
+                    ],
                     "type": "font"
                 }
             ]
@@ -153,6 +221,7 @@
         "sdkVersion": "3",
         "targetPlatforms": [
             "basalt",
+            "chalk",
             "diorite"
         ],
         "uuid": "1d29cbc7-f067-4822-b841-8cf6e6c6e0bb",
@@ -160,5 +229,5 @@
             "watchface": true
         }
     },
-    "version": "1.2.0"
+    "version": "1.3.0"
 }
