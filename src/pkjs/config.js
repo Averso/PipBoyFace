@@ -85,6 +85,13 @@ module.exports = [
         "messageKey": "vibe_disconnect",
         "label": "Vibrate on disconnect",
         "defaultValue": false
+      },
+      {
+        "type": "toggle",
+        "messageKey": "date_format",
+        "label": "Date format",
+        "description": "dd-mm-yyyy/mm-dd-yyyy",
+        "defaultValue": false
       }
     ]
   },

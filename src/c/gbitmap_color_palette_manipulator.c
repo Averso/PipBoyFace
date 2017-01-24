@@ -1,4 +1,5 @@
 #include "gbitmap_color_palette_manipulator.h"
+// https://github.com/rebootsramblings/GBitmap-Colour-Palette-Manipulator
 
 #ifdef PBL_COLOR
 

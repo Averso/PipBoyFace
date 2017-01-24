@@ -3,6 +3,7 @@
 #include "window.h"
 #include "callbacks.h"
 #include "gbitmap_color_palette_manipulator.h"
+#include "time.h"
 
 //colors in vaultboy
 //GColorWhite, GColorLightGray, GColorDarkGray | white
@@ -133,7 +134,8 @@ void window_update()
   
   //refresh vault boy
   battery_update_vaultboy();
-  
+  update_time();
+  update_date();
 
 }
 

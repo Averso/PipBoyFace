@@ -16,6 +16,7 @@ void load_default_settings() {
   settings.vibe_on_disconnect = false;
   settings.battery_medium_level=BATTERY_MED_DEFAULT;
   settings.battery_low_level=BATTERY_LOW_DEFAULT;
+  settings.date_format = false;
 }
 
 void inbox_received_handler(DictionaryIterator *iter, void *context) {
@@ -26,6 +27,12 @@ void inbox_received_handler(DictionaryIterator *iter, void *context) {
   if(vibe_enabled) {
    settings.vibe_on_disconnect = vibe_enabled->value->int32 == 1;
   }  
+  
+  //date format
+  Tuple *date_t = dict_find(iter, MESSAGE_KEY_date_format);
+  if(vibe_enabled) {
+   settings.date_format = date_t->value->int32 == 1;
+  } 
   
   #ifdef PBL_COLOR
   //color

@@ -2,8 +2,6 @@
 #include <pebble.h>
 
 //dimensions & positions
-
-
 #if PBL_DISPLAY_HEIGHT == 180 //CHALK
 #define LAYER_DATE_X 35
 #define LAYER_DATE_Y 135
@@ -149,20 +147,16 @@ typedef enum {WHITE,GREEN,BLUE,AMBER} ScreenColor;
 
 
 //settings struct
-#ifdef PBL_COLOR
+
 typedef struct ClaySettings {
+  #ifdef PBL_COLOR
   ScreenColor screen_color;
+  #endif
   bool vibe_on_disconnect;
   int battery_medium_level;
   int battery_low_level;
+  bool date_format;
 } ClaySettings;
-#else
-typedef struct ClaySettings {
-  bool vibe_on_disconnect;
-  int battery_medium_level;
-  int battery_low_level;
-} ClaySettings;
-#endif
 
 // An instance of the struct
 ClaySettings settings;

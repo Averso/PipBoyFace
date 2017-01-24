@@ -2,16 +2,26 @@
 #include "global.h"
 #include "callbacks.h"
 
+static bool is_connected = true; //to vibrate once
 
 //BLUETOOTH
-void bluetooth_callback(bool connected) {
+void bluetooth_callback(bool connected) { 
+ 
+  if(persist_exists(12))
+  {
+     is_connected = persist_read_bool(12);
+  }
   
   //show/hide bluetooth icon depending on connection
   layer_set_hidden(bitmap_layer_get_layer(layer_bt), connected);
   
-  //if devices aren't connected and viration is set on in settings - vibrate
-  if(!connected && settings.vibe_on_disconnect)
+  
+  //vibrate just once based on previous status
+  if((is_connected && !connected) && settings.vibe_on_disconnect)
     vibes_double_pulse();
+  
+  is_connected = connected;
+  persist_write_bool(12,is_connected);
   
 }
 
